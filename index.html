@@ -121,6 +121,16 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
 @keyframes blink { 0% { background: #fff; } 50% { background: #fde6e1; } 100% { background: #fff; } }
 @media (max-width: 480px) { .tdisplay { font-size: 72px; } }
 
+/* 수정 창 */
+[hidden] { display: none !important; }
+.todo .edit { min-height: 44px; min-width: 56px; border: 0; background: transparent; color: #1d6a7a; font-size: 16px; font-weight: 600; margin-left: 4px; }
+.editor { z-index: 25; }
+.editor .sheet { max-width: 560px; }
+.edfield { margin-bottom: 14px; }
+.edfield .lbl { display: block; margin-bottom: 6px; }
+.swatch { width: 48px; height: 48px; border-radius: 50%; border: 4px solid #fff; -webkit-box-shadow: 0 0 0 2px #b9c6cf; box-shadow: 0 0 0 2px #b9c6cf; margin: 4px 12px 8px 4px; padding: 0; -webkit-appearance: none; appearance: none; }
+.swatch.on { -webkit-box-shadow: 0 0 0 4px #1d2a33; box-shadow: 0 0 0 4px #1d2a33; }
+
 /* 설정 창 */
 .overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(20,30,36,0.55); overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 20; }
 .overlay.open { display: block; }
@@ -257,6 +267,43 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
   </div>
 </div>
 
+<div class="overlay editor" id="editor">
+  <div class="sheet">
+    <h2 id="edTitle">수정</h2>
+    <div class="edfield" id="edNameRow">
+      <label class="lbl" for="edName">이름</label>
+      <input type="text" class="inp" id="edName" maxlength="8" style="width:100%">
+    </div>
+    <div class="edfield" id="edColorRow">
+      <span class="lbl">색깔</span>
+      <div id="edColors"></div>
+    </div>
+    <div class="edfield" id="edTextRow">
+      <label class="lbl" for="edText">내용</label>
+      <textarea class="inp" id="edText" maxlength="500"></textarea>
+    </div>
+    <div class="edfield" id="edWhoRow">
+      <label class="lbl" for="edWho">담당</label>
+      <select class="inp" id="edWho"></select>
+    </div>
+    <div class="edfield" id="edDueRow">
+      <label class="lbl" for="edDue">기한</label>
+      <div class="row" style="margin-bottom:0">
+        <input type="date" class="inp" id="edDue">
+        <button type="button" class="btn small ghost" data-act="ed-cleardate">기한 없음</button>
+      </div>
+    </div>
+    <div class="edfield" id="edImpRow">
+      <label class="check" for="edImp"><input type="checkbox" id="edImp">중요 공지로 맨 위에 두기</label>
+    </div>
+    <p class="lbl" id="edMsg" style="color:#c8452f"></p>
+    <div class="row" style="margin-top:8px">
+      <button type="button" class="btn" data-act="ed-save">저장</button>
+      <button type="button" class="btn ghost" data-act="ed-cancel">취소</button>
+    </div>
+  </div>
+</div>
+
 <div class="overlay alarm" id="alarm">
   <div class="sheet">
     <h2 id="alarmText">시간이 다 됐어요</h2>
@@ -376,8 +423,8 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
     var m = [
       { id: 'm1', name: '엄마', color: COLORS[1] },
       { id: 'm2', name: '아빠', color: COLORS[0] },
-      { id: 'm3', name: '첫째', color: COLORS[2] },
-      { id: 'm4', name: '둘째', color: COLORS[3] }
+      { id: 'm3', name: 'choice', color: COLORS[2] },
+      { id: 'm4', name: 'justice', color: COLORS[3] }
     ];
     var now = new Date().getTime();
     return {
@@ -476,6 +523,7 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
         '<button type="button" class="box" data-act="toggle-todo" data-id="' + esc(x.id) + '" aria-label="완료 표시">' + (x.done ? '✓' : '') + '</button>' +
         '<div class="main"><div class="txt">' + esc(x.text) + '</div>' +
         '<div class="meta">' + whoHtml(x) + dueHtml(x) + '</div></div>' +
+        '<button type="button" class="edit" data-act="edit-todo" data-id="' + esc(x.id) + '">수정</button>' +
         '<button type="button" class="del" data-act="del-todo" data-id="' + esc(x.id) + '">삭제</button>' +
         '</div>';
     }
@@ -501,6 +549,7 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
         (n.important ? '<span class="tag">중요</span>' : '') +
         '<div class="body">' + esc(n.text) + '</div>' +
         '<div class="foot"><span class="date">' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일</span>' +
+        '<button type="button" class="btn small ghost" data-act="edit-notice" data-id="' + esc(n.id) + '">수정</button>' +
         '<button type="button" class="btn small ghost" data-act="pin-notice" data-id="' + esc(n.id) + '">' + (n.important ? '중요 해제' : '중요 표시') + '</button>' +
         '<button type="button" class="btn small danger" data-act="del-notice" data-id="' + esc(n.id) + '">삭제</button>' +
         '</div></div>';
@@ -516,6 +565,7 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
       var m = state.members[i];
       h += '<div class="mrow"><span class="dot" style="background:' + m.color + '"></span>' +
         '<span class="mname">' + esc(m.name) + '</span>' +
+        '<button type="button" class="btn small ghost" style="margin-right:8px" data-act="edit-member" data-id="' + esc(m.id) + '">수정</button>' +
         '<button type="button" class="btn small danger" data-act="del-member" data-id="' + esc(m.id) + '">삭제</button></div>';
     }
     if (!state.members.length) { h = '<p>구성원이 없어요. 아래에서 추가해 주세요.</p>'; }
@@ -535,6 +585,7 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
       '<button type="button" class="box" data-act="' + (fromFamily ? 'toggle-todo' : 'toggle-ptodo') + '" data-id="' + esc(x.id) + '" aria-label="완료 표시">' + (x.done ? '✓' : '') + '</button>' +
       '<div class="main"><div class="txt">' + esc(x.text) + '</div>' +
       '<div class="meta">' + dueHtml(x) + '</div></div>';
+    h += '<button type="button" class="edit" data-act="' + (fromFamily ? 'edit-todo' : 'edit-ptodo') + '" data-id="' + esc(x.id) + '">수정</button>';
     if (!fromFamily) {
       h += '<button type="button" class="del" data-act="del-ptodo" data-id="' + esc(x.id) + '">삭제</button>';
     }
@@ -846,6 +897,90 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
     inp.focus();
   }
 
+  /* ---------- 수정 창 ---------- */
+  var editing = null, edColor = '';
+
+  function getEditItem() {
+    if (!editing) { return null; }
+    if (editing.kind === 'todo') { return findById(state.todos, editing.id); }
+    if (editing.kind === 'notice') { return findById(state.notices, editing.id); }
+    if (editing.kind === 'ptodo') { return findById(state.personal[editing.owner] || [], editing.id); }
+    if (editing.kind === 'member') { return findById(state.members, editing.id); }
+    return null;
+  }
+
+  function renderEdColors() {
+    var h = '';
+    for (var i = 0; i < COLORS.length; i++) {
+      h += '<button type="button" class="swatch' + (COLORS[i] === edColor ? ' on' : '') + '" style="background:' + COLORS[i] + '" data-act="ed-color" data-id="' + i + '" aria-label="색 선택"></button>';
+    }
+    $('edColors').innerHTML = h;
+  }
+
+  function openEditor(kind, id) {
+    editing = { kind: kind, id: id, owner: kind === 'ptodo' ? person : null };
+    var item = getEditItem();
+    if (!item) { editing = null; return; }
+    var titles = { todo: '할 일 수정', notice: '공지 수정', ptodo: '개인 할 일 수정', member: '가족 구성원 수정' };
+    var isMember = kind === 'member';
+    $('edTitle').innerHTML = titles[kind];
+    $('edNameRow').hidden = !isMember;
+    $('edColorRow').hidden = !isMember;
+    $('edTextRow').hidden = isMember;
+    $('edWhoRow').hidden = kind !== 'todo';
+    $('edDueRow').hidden = !(kind === 'todo' || kind === 'ptodo');
+    $('edImpRow').hidden = kind !== 'notice';
+    $('edMsg').innerHTML = '';
+    if (isMember) {
+      $('edName').value = item.name;
+      edColor = item.color;
+      renderEdColors();
+    } else {
+      $('edText').value = item.text;
+    }
+    if (kind === 'todo') {
+      var h = '<option value="">모두</option>';
+      for (var i = 0; i < state.members.length; i++) {
+        h += '<option value="' + esc(state.members[i].id) + '">' + esc(state.members[i].name) + '</option>';
+      }
+      $('edWho').innerHTML = h;
+      $('edWho').value = item.who || '';
+    }
+    if (kind === 'todo' || kind === 'ptodo') { $('edDue').value = item.due || ''; }
+    if (kind === 'notice') { $('edImp').checked = !!item.important; }
+    $('editor').className = 'overlay editor open';
+  }
+
+  function closeEditor() {
+    $('editor').className = 'overlay editor';
+    editing = null;
+  }
+
+  function saveEditor() {
+    var item = getEditItem();
+    if (!item) { closeEditor(); return; }
+    var kind = editing.kind;
+    if (kind === 'member') {
+      var name = $('edName').value.replace(/^\s+|\s+$/g, '');
+      if (!name) { $('edMsg').innerHTML = '이름을 적어 주세요.'; return; }
+      item.name = name;
+      if (edColor) { item.color = edColor; }
+    } else {
+      var text = $('edText').value.replace(/^\s+|\s+$/g, '');
+      if (!text) { $('edMsg').innerHTML = '내용을 적어 주세요.'; return; }
+      item.text = text;
+      if (kind === 'todo') { item.who = $('edWho').value; item.due = $('edDue').value; }
+      if (kind === 'ptodo') { item.due = $('edDue').value; }
+      if (kind === 'notice') { item.important = $('edImp').checked; }
+    }
+    save();
+    closeEditor();
+    if (kind === 'member') { renderMembers(); renderAll(); }
+    else if (kind === 'notice') { renderNotices(); }
+    else if (kind === 'todo') { renderTodos(); }
+    else { renderPersonal(); }
+  }
+
   function openSettings() {
     $('familyInput').value = state.family;
     $('backupOut').value = JSON.stringify(state);
@@ -935,6 +1070,23 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
       }
     } else if (act === 'tab') {
       setView(id);
+    } else if (act === 'edit-todo') {
+      openEditor('todo', id);
+    } else if (act === 'edit-notice') {
+      openEditor('notice', id);
+    } else if (act === 'edit-ptodo') {
+      openEditor('ptodo', id);
+    } else if (act === 'edit-member') {
+      openEditor('member', id);
+    } else if (act === 'ed-save') {
+      saveEditor();
+    } else if (act === 'ed-cancel') {
+      closeEditor();
+    } else if (act === 'ed-cleardate') {
+      $('edDue').value = '';
+    } else if (act === 'ed-color') {
+      edColor = COLORS[parseInt(id, 10)];
+      renderEdColors();
     } else if (act === 'timer-start') {
       timerStart();
     } else if (act === 'timer-reset' || act === 'timer-dismiss') {
@@ -1015,6 +1167,9 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
   $('tLabel').addEventListener('input', function () {
     state.timer.label = this.value;
     save();
+  }, false);
+  $('edName').addEventListener('keydown', function (e) {
+    if (e.keyCode === 13) { e.preventDefault(); saveEditor(); }
   }, false);
   $('tMin').addEventListener('keydown', function (e) {
     if (e.keyCode === 13) { e.preventDefault(); timerCustom(); }
