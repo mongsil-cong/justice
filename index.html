@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="우리집 게시판">
-<title>우리집 게시판</title>
+<meta name="apple-mobile-web-app-title" content="justice 입학전 진도표">
+<title>justice 입학전 진도표</title>
 <style>
 * { -webkit-box-sizing: border-box; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; padding: 0; }
@@ -121,6 +121,57 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
 @keyframes blink { 0% { background: #fff; } 50% { background: #fde6e1; } 100% { background: #fff; } }
 @media (max-width: 480px) { .tdisplay { font-size: 72px; } }
 
+/* 진행 기록 */
+.pbar { height: 12px; border-radius: 6px; background: #e1e8ec; overflow: hidden; margin: 8px 0 6px; }
+.pbar i { display: block; height: 100%; background: #1f7a6d; }
+.pbar.big { height: 18px; border-radius: 9px; margin: 6px 0 0; }
+.prow { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; -webkit-align-items: center; align-items: center; }
+.prow > * { margin: 0 8px 6px 0; }
+.ptxt { font-weight: 700; margin-right: 12px; }
+.pin { width: 92px; min-height: 44px; padding: 6px 10px; }
+.rate { margin-bottom: 14px; padding: 12px 14px; border-radius: 12px; background: #eaf4f1; }
+
+/* 수학 학습목차 */
+.srow { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; margin-bottom: 8px; }
+.sname { width: 140px; min-width: 140px; font-size: 16px; }
+.sbar { -webkit-flex: 1; flex: 1; min-width: 60px; margin: 0 10px; }
+.sbar .pbar { margin: 0; }
+.stxt { width: 118px; min-width: 118px; text-align: right; font-size: 16px; }
+.mblock { margin-bottom: 14px; }
+.mhead { margin: 16px 0 2px; padding: 8px 12px; background: #eef3f6; border-radius: 8px; font-weight: 700; display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; }
+.mhead span { font-weight: 400; color: #4b5b66; }
+.mnote { font-size: 15px; color: #8a5a20; margin-left: 4px; }
+.todo.compact { padding: 8px 0; }
+.todo.compact .box { width: 38px; height: 38px; min-width: 38px; font-size: 20px; }
+@media (max-width: 560px) { .sname { width: 96px; min-width: 96px; font-size: 14px; } .stxt { width: 96px; min-width: 96px; font-size: 14px; } }
+
+/* 달력 */
+.calhead { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: space-between; justify-content: space-between; margin-bottom: 10px; }
+.calhead h2 { margin: 0; font-size: 24px; display: block; }
+.calnav { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; }
+.calnav .btn { margin-left: 8px; }
+table.cal { width: 100%; border-collapse: separate; border-spacing: 4px; table-layout: fixed; margin: 6px 0 0; }
+.cal th { font-size: 15px; color: #5b6b76; padding: 4px 0; font-weight: 600; }
+.cal th.sun { color: #c8452f; }
+.cal th.sat { color: #2f6fb3; }
+.cal td { height: 82px; vertical-align: top; border: 2px solid #d9e1e6; border-radius: 10px; background: #fff; padding: 4px 5px; text-align: left; overflow: hidden; }
+.cal td { cursor: pointer; }
+.cal td.empty { border: 0; background: transparent; cursor: default; }
+.cal td.sel { border-color: #1f7a6d; background: #eaf4f1; }
+.cal .dn { display: inline-block; min-width: 26px; height: 26px; line-height: 26px; text-align: center; font-weight: 700; font-size: 16px; border-radius: 13px; }
+.cal td.today .dn { background: #1d4b57; color: #fff; }
+.goal { display: inline-block; font-size: 12px; font-weight: 700; color: #fff; background: #d98a1f; border-radius: 6px; padding: 0 6px; margin: 2px 4px 0 0; }
+.bdg { display: inline-block; font-size: 13px; font-weight: 700; border-radius: 999px; padding: 0 8px; margin: 2px 4px 0 0; color: #fff; }
+.bdg.ok { background: #1f7a6d; }
+.bdg.plan { background: #2f6fb3; }
+.bdg.miss { background: #c8452f; }
+.legend { margin: 12px 0 0; line-height: 2; }
+.legend .bdg, .legend .goal { margin-left: 8px; }
+.goalrow { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; padding: 10px 12px; margin-bottom: 8px; border-radius: 10px; background: #fff4e0; border: 1px solid #ecd3a3; }
+.goalrow .goaltag { background: #d98a1f; color: #fff; font-size: 14px; font-weight: 700; border-radius: 6px; padding: 1px 8px; margin-right: 10px; }
+.goalrow .gtxt { -webkit-flex: 1; flex: 1; min-width: 0; margin-right: 8px; word-wrap: break-word; }
+@media (max-width: 560px) { .cal td { height: 66px; padding: 3px; } .cal .dn { font-size: 14px; } }
+
 /* 수정 창 */
 [hidden] { display: none !important; }
 .todo .edit { min-height: 44px; min-width: 56px; border: 0; background: transparent; color: #1d6a7a; font-size: 16px; font-weight: 600; margin-left: 4px; }
@@ -156,7 +207,7 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
 <noscript><p style="padding:20px">이 페이지는 JavaScript가 켜져 있어야 작동해요.</p></noscript>
 
 <div class="top">
-  <h1 id="title">우리집 게시판</h1>
+  <h1 id="title">justice 입학전 진도표</h1>
   <div class="right">
     <div class="clock" id="clock"></div>
     <button type="button" class="gear" data-act="open-settings">설정</button>
@@ -164,80 +215,96 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
 </div>
 
 <div class="tabs">
-  <button type="button" class="tab on" id="tabBoard" data-act="tab" data-id="board">가족 게시판</button>
-  <button type="button" class="tab" id="tabPersonal" data-act="tab" data-id="personal">개인 할 일</button>
+  <button type="button" class="tab on" id="tabPersonal" data-act="tab" data-id="personal">진도표</button>
+  <button type="button" class="tab" id="tabCal" data-act="tab" data-id="cal">달력</button>
   <button type="button" class="tab" id="tabTimer" data-act="tab" data-id="timer">타이머</button>
 </div>
 
 <div class="banner warn" id="warn" hidden>
   <span>이 브라우저는 저장을 막고 있어요. 지금 적은 내용은 창을 닫으면 사라져요. 사생활 보호 모드라면 꺼 주세요.</span>
 </div>
-<div class="banner" id="demo" hidden>
-  <span>예시 내용이 들어 있어요. 지우고 우리 가족 내용을 적어 주세요.</span>
-  <button type="button" class="btn small ghost" data-act="clear-demo">예시 지우기</button>
-</div>
 
-<div id="viewBoard" class="view">
-<div class="board">
-  <section class="col-notice panel">
-    <h2>공지 <span class="count" id="noticeCount"></span></h2>
-    <textarea class="inp" id="noticeText" placeholder="가족에게 알릴 내용을 적어 주세요"></textarea>
-    <div class="row" style="margin-top:8px">
-      <label class="check grow" for="noticeImp"><input type="checkbox" id="noticeImp">중요 공지로 맨 위에 두기</label>
-      <button type="button" class="btn" data-act="add-notice">공지 올리기</button>
-    </div>
-    <div id="noticeList"></div>
-  </section>
-
-  <section class="col-todo panel">
-    <h2>할 일 <span class="count" id="todoCount"></span></h2>
-    <div class="chips" id="chips"></div>
-    <div class="form-todo">
-      <div class="row">
-        <input type="text" class="inp grow" id="todoText" placeholder="할 일을 적어 주세요" maxlength="80">
-        <button type="button" class="btn" data-act="add-todo">추가</button>
-      </div>
-      <div class="row" style="margin-bottom:0">
-        <span class="lbl">담당</span>
-        <select class="inp" id="todoWho"></select>
-        <span class="lbl">기한</span>
-        <input type="date" class="inp" id="todoDue">
-        <button type="button" class="btn small ghost" data-act="clear-date">기한 없음</button>
-      </div>
-    </div>
-    <div id="todoList"></div>
-    <div class="tfoot"><button type="button" class="btn small ghost" data-act="clear-done">완료한 일 지우기</button></div>
-  </section>
-</div>
-</div>
-
-<div id="viewPersonal" class="view off">
+<div id="viewPersonal" class="view">
   <div class="personal">
     <div class="panel">
-      <h2>누구의 할 일인가요?</h2>
-      <div class="chips" id="personChips"></div>
-    </div>
-
-    <div class="panel">
-      <h2><span id="pTitle">개인 할 일</span> <span class="count" id="pCount"></span></h2>
+      <h2>과목별 진도 <span class="count" id="pCount"></span></h2>
+      <div class="rate" id="pRate" hidden></div>
       <div class="form-todo">
         <div class="row">
-          <input type="text" class="inp grow" id="pText" placeholder="내 할 일을 적어 주세요" maxlength="80">
+          <input type="text" class="inp grow" id="pText" placeholder="과목이나 교재를 적어 주세요" maxlength="80">
           <button type="button" class="btn" data-act="add-ptodo">추가</button>
         </div>
         <div class="row" style="margin-bottom:0">
-          <span class="lbl">기한</span>
+          <span class="lbl">목표일</span>
           <input type="date" class="inp" id="pDue">
-          <button type="button" class="btn small ghost" data-act="clear-pdate">기한 없음</button>
+          <button type="button" class="btn small ghost" data-act="clear-pdate">목표일 없음</button>
+        </div>
+        <div class="row" style="margin-bottom:0">
+          <span class="lbl">총 분량(선택)</span>
+          <input type="number" class="inp" id="pTotal" min="1" placeholder="예: 10" style="width:96px">
+          <input type="text" class="inp" id="pUnit" placeholder="단위(강)" maxlength="4" style="width:96px">
         </div>
       </div>
       <div id="pList"></div>
+      <p class="lbl" id="pMsg" style="color:#c8452f;margin:8px 0 0"></p>
       <div class="tfoot"><button type="button" class="btn small ghost" data-act="clear-pdone">완료한 일 지우기</button></div>
     </div>
 
+    <div class="panel" id="mathPanel">
+      <h2>중학 수학 학습목차 <span class="count" id="mathCount"></span></h2>
+      <div class="rate" id="mathRate"></div>
+      <div class="mblock" id="mathSummary"></div>
+      <div class="lbl" style="margin-bottom:6px">학년</div>
+      <div class="chips" id="mathGradeChips"></div>
+      <div class="lbl" style="margin-bottom:6px">대단원</div>
+      <div class="chips" id="mathUnitChips"></div>
+      <label class="check" for="mathTodoOnly"><input type="checkbox" id="mathTodoOnly">아직 안 한 강의만 보기</label>
+      <div id="mathList"></div>
+    </div>
+  </div>
+</div>
+
+<div id="viewCal" class="view off">
+  <div class="personal">
     <div class="panel">
-      <h2>가족 할 일 중 맡은 일 <span class="count" id="fCount"></span></h2>
-      <div id="fList"></div>
+      <div class="calhead">
+        <button type="button" class="btn ghost" data-act="cal-prev" aria-label="이전 달">&#9664;</button>
+        <h2 id="calTitle"></h2>
+        <div class="calnav">
+          <button type="button" class="btn small ghost" data-act="cal-today">오늘</button>
+          <button type="button" class="btn ghost" data-act="cal-next" aria-label="다음 달">&#9654;</button>
+        </div>
+      </div>
+      <div class="rate" id="calStat"></div>
+      <div id="calGrid"></div>
+      <p class="lbl legend">
+        <span class="bdg plan">1/2</span> 계획 있음
+        <span class="bdg ok">2/2</span> 모두 학습함
+        <span class="bdg miss">0/1</span> 못 한 계획
+        <span class="goal">목표</span> 진도표 목표일
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2 id="dayTitle"></h2>
+      <div id="dayGoals"></div>
+      <div class="lbl" style="margin:8px 0 2px">이 날 할 계획 (체크하면 학습한 거예요)</div>
+      <div id="dayPlans"></div>
+      <div class="form-todo" style="margin-top:12px">
+        <div class="row" style="margin-bottom:0">
+          <span class="lbl">과목</span>
+          <select class="inp" id="planSubject"></select>
+          <input type="text" class="inp grow" id="planText" placeholder="예: 1~5강, 문제 20개" maxlength="40">
+          <button type="button" class="btn" data-act="plan-add">계획 추가</button>
+        </div>
+      </div>
+      <div class="form-todo" id="goalForm" style="margin-top:10px">
+        <div class="row" style="margin-bottom:0">
+          <span class="lbl">이 날을 목표일로</span>
+          <select class="inp" id="goalItem"></select>
+          <button type="button" class="btn ghost" data-act="cal-setgoal">목표일로 정하기</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -270,31 +337,25 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
 <div class="overlay editor" id="editor">
   <div class="sheet">
     <h2 id="edTitle">수정</h2>
-    <div class="edfield" id="edNameRow">
-      <label class="lbl" for="edName">이름</label>
-      <input type="text" class="inp" id="edName" maxlength="8" style="width:100%">
-    </div>
-    <div class="edfield" id="edColorRow">
-      <span class="lbl">색깔</span>
-      <div id="edColors"></div>
-    </div>
     <div class="edfield" id="edTextRow">
       <label class="lbl" for="edText">내용</label>
       <textarea class="inp" id="edText" maxlength="500"></textarea>
     </div>
-    <div class="edfield" id="edWhoRow">
-      <label class="lbl" for="edWho">담당</label>
-      <select class="inp" id="edWho"></select>
-    </div>
     <div class="edfield" id="edDueRow">
-      <label class="lbl" for="edDue">기한</label>
+      <label class="lbl" for="edDue">목표일</label>
       <div class="row" style="margin-bottom:0">
         <input type="date" class="inp" id="edDue">
-        <button type="button" class="btn small ghost" data-act="ed-cleardate">기한 없음</button>
+        <button type="button" class="btn small ghost" data-act="ed-cleardate">목표일 없음</button>
       </div>
     </div>
-    <div class="edfield" id="edImpRow">
-      <label class="check" for="edImp"><input type="checkbox" id="edImp">중요 공지로 맨 위에 두기</label>
+    <div class="edfield" id="edTrackRow">
+      <span class="lbl">진행 기록 (선택)</span>
+      <div class="row" style="margin-bottom:0">
+        <input type="number" class="inp" id="edTotal" min="1" placeholder="총 분량" style="width:110px">
+        <input type="text" class="inp" id="edUnit" placeholder="단위(강)" maxlength="4" style="width:110px">
+        <input type="number" class="inp" id="edProg" min="0" placeholder="완료한 양" style="width:110px">
+      </div>
+      <p class="lbl" style="margin:4px 0 0">총 분량을 비우면 진행 기록을 쓰지 않아요.</p>
     </div>
     <p class="lbl" id="edMsg" style="color:#c8452f"></p>
     <div class="row" style="margin-top:8px">
@@ -315,15 +376,8 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
   <div class="sheet">
     <h2>설정</h2>
 
-    <h3>게시판 이름</h3>
-    <input type="text" class="inp" id="familyInput" maxlength="12" style="width:100%">
-
-    <h3>가족 구성원</h3>
-    <div id="memberList"></div>
-    <div class="row" style="margin-top:8px">
-      <input type="text" class="inp grow" id="memberText" placeholder="이름 (예: 할머니)" maxlength="8">
-      <button type="button" class="btn" data-act="add-member">추가</button>
-    </div>
+    <h3>페이지 이름</h3>
+    <input type="text" class="inp" id="familyInput" maxlength="24" style="width:100%">
 
     <h3>백업과 옮기기</h3>
     <p>아래 글을 전부 선택해 복사해 두면, 다른 아이패드에서 같은 내용을 불러올 수 있어요.</p>
@@ -347,13 +401,18 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
   var COLORS = ['#2f6fb3', '#c2583a', '#3b8a5a', '#8a5fb0', '#a67c00', '#c04a7a', '#2a8c9c', '#6b7a8a'];
   var DAYS = ['일', '월', '화', '수', '목', '금', '토'];
   var state = null;
-  var filter = 'all';
   var storageOk = true;
   var lastDay = '';
-  var view = 'board';
-  var person = null;
+  var view = 'personal';
+  var person = 'm4';
+  var DEFAULT_TITLE = 'justice 입학전 진도표';
   var PRESETS = [60, 180, 300, 600, 900, 1500, 1800, 3600];
   var timerId = null, beepId = null, beepCount = 0, audioCtx = null;
+  /* 중학 수학 학습목차 (엑셀 '전체 학습목차' 시트): [대단원, 강의번호, 학년, 강의명, 분, 페이지, 비고] */
+  var MATH_UNITS = ["Ⅰ. 수와 연산", "Ⅱ. 문자와 식", "Ⅲ. 함수", "Ⅳ. 확률과 통계", "Ⅴ. 기하"];
+  var MATH_GRADES = ["1학년", "2학년", "3학년", "영역별 기출"];
+  var MATH_DONE0 = '11111100011111000000111111111111111110111100000000000000000000000000000000000000000111111111111111110100111111111111111110111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
+  var MATH = [[0,"1강",0,"소수와 합성수",11,"P8",""],[0,"2강",0,"소인수분해",11,"P9",""],[0,"3강",0,"소인수분해를 이용하여 약수 구하기",12,"P10",""],[0,"4강",0,"공약수와 최대공약수",13,"P11",""],[0,"5강",0,"최대공약수의 활용",12,"P12",""],[0,"6강",0,"공배수와 최소공배수",12,"P13",""],[0,"7강",0,"최소공배수의 활용",10,"P14",""],[0,"8강",0,"최대공약수와 최소공배수의 관계",11,"P15",""],[0,"9강",0,"탄탄한 중단원 문제 (소인수분해)",17,"P16~17",""],[0,"10강",0,"정수",9,"P18",""],[0,"11강",0,"유리수",9,"P19",""],[0,"12강",0,"절댓값",8,"P20",""],[0,"13강",0,"수의 대소 관계 / 부등호의 사용",8,"P21",""],[0,"14강",0,"유리수의 덧셈과 뺄셈",11,"P22",""],[0,"15강",0,"유리수의 덧셈과 뺄셈의 혼합 계산",16,"P23",""],[0,"16강",0,"유리수의 곱셈",12,"P24",""],[0,"17강",0,"거듭제곱의 계산",12,"P25",""],[0,"18강",0,"유리수의 나눗셈",12,"P26",""],[0,"19강",0,"덧셈. 뺄셈. 곱셈. 나눗셈의 혼합 계산",14,"P27",""],[0,"20강",0,"탄탄한 중단원 문제 (정수와 유리수)",17,"P28~29",""],[0,"21강",1,"유리수와 소수",10,"P30",""],[0,"22강",1,"유한소수로 나타낼 수 있는 분수",10,"P31",""],[0,"23강",1,"유리수와 순환소수",13,"P32",""],[0,"24강",1,"순환소수를 분수로 나타내기",14,"P33",""],[0,"25강",1,"순환소수를 분수로 나타내는 공식",10,"P34",""],[0,"26강",1,"순환소수의 대소 관계 / 순환소수의 계산",11,"P35",""],[0,"27강",1,"탄탄한 중단원 문제 (유리수와 순환소수)",17,"P36~37",""],[0,"28강",2,"제곱근의 뜻과 표현",10,"P38",""],[0,"29강",2,"제곱근의 성질",14,"P39",""],[0,"30강",2,"제곱근의 대소 관계",12,"P40",""],[0,"31강",2,"무리수와 실수",7,"P41",""],[0,"32강",2,"무리수를 수직선 위에 나타내기",10,"P42",""],[0,"33강",2,"실수와 수직선",8,"P43",""],[0,"34강",2,"실수의 대소 관계",14,"P44",""],[0,"35강",2,"두 실수 사이에 있는 실수 찾기",8,"P45",""],[0,"36강",2,"제곱근의 곱셈과 나눗셈",13,"P46",""],[0,"37강",2,"분모의 유리화",12,"P47",""],[0,"38강",2,"제곱근의 덧셈과 뺄셈",14,"P48",""],[0,"39강",2,"근호를 포함한 복잡한 식의 계산",16,"P49",""],[0,"40강",2,"제곱근의 값",16,"P50",""],[0,"41강",2,"제곱근의 활용",11,"P51",""],[0,"42강",2,"탄탄한 중단원 문제 (제곱근과 실수)",16,"P52~53",""],[0,"기출",3,"영역별 기출 (수와 연산)",0,"","단원 마무리 기출"],[1,"43강",0,"문자를 사용한 식",16,"P56",""],[1,"44강",0,"식의 값",12,"P57",""],[1,"45강",0,"일차식",12,"P58",""],[1,"46강",0,"일차식과 수의 곱셈. 나눗셈",11,"P59",""],[1,"47강",0,"일차식의 덧셈과 뺄셈",12,"P60",""],[1,"48강",0,"복잡한 일차식의 덧셈과 뺄셈",13,"P61",""],[1,"49강",0,"탄탄한 중단원 문제 (문자와 식)",19,"P62~63",""],[1,"50강",0,"방정식과 항등식",14,"P64",""],[1,"51강",0,"등식의 성질",12,"P65",""],[1,"52강",0,"일차방정식의 풀이",14,"P66",""],[1,"53강",0,"복잡한 일차방정식의 풀이",12,"P67",""],[1,"54강",0,"일차방정식의 활용 (1)",14,"P68",""],[1,"55강",0,"일차방정식의 활용 (2)",14,"P69",""],[1,"56강",0,"탄탄한 중단원 문제 (일차방정식)",25,"P70~71",""],[1,"57강",1,"지수법칙 (1). (2)",9,"P72",""],[1,"58강",1,"지수법칙 (3). (4)",12,"P73",""],[1,"59강",1,"단항식의 곱셈과 나눗셈",13,"P74",""],[1,"60강",1,"단항식의 곱셈과 나눗셈의 혼합 계산",13,"P75",""],[1,"61강",1,"다항식의 덧셈과 뺄셈",17,"P76",""],[1,"62강",1,"다항식과 단항식의 곱셈과 나눗셈",14,"P77",""],[1,"63강",1,"단항식과 다항식의 혼합 계산",12,"P78",""],[1,"64강",1,"탄탄한 중단원 문제 (식의 계산)",13,"P79~80",""],[1,"65강",1,"부등식과 그 해",9,"P81",""],[1,"66강",1,"부등식의 성질",9,"P82",""],[1,"67강",1,"부등식의 해와 수직선",8,"P83",""],[1,"68강",1,"일차부등식",13,"P84",""],[1,"69강",1,"여러 가지 일차부등식",12,"P85",""],[1,"70강",1,"일차부등식의 활용",14,"P86",""],[1,"71강",1,"탄탄한 중단원 문제 (부등식)",19,"P87~88",""],[1,"72강",1,"미지수가 2개인 일차방정식",10,"P89",""],[1,"73강",1,"미지수가 2개인 연립일차방정식",11,"P90",""],[1,"74강",1,"연립방정식의 풀이 (1) - 가감법",12,"P91",""],[1,"75강",1,"연립방정식의 풀이 (2) - 대입법",11,"P92",""],[1,"76강",1,"복잡한 연립방정식",11,"P93",""],[1,"77강",1,"A=B=C 꼴의 연립방정식",14,"P94",""],[1,"78강",1,"해가 특수한 연립방정식",13,"P95",""],[1,"79강",1,"연립방정식의 활용 (1)",12,"P96",""],[1,"80강",1,"연립방정식의 활용 (2)",13,"P97",""],[1,"81강",1,"연립방정식의 활용 (3)",15,"P98",""],[1,"82강",1,"탄탄한 중단원 문제 (연립방정식)",23,"P99~100",""],[1,"83강",2,"곱셈 공식 (1)",14,"P101",""],[1,"84강",2,"곱셈 공식의 변형",11,"P102",""],[1,"85강",2,"곱셈 공식 (2)",17,"P103",""],[1,"86강",2,"곱셈 공식을 이용한 수의 계산",12,"P104",""],[1,"87강",2,"곱셈 공식을 이용한 근호를 포함한 식의 계산",14,"P105",""],[1,"88강",2,"곱셈 공식을 이용한 분모의 유리화",11,"P106",""],[1,"89강",2,"식의 값 구하기",12,"P107",""],[1,"90강",2,"인수분해의 뜻",13,"P108",""],[1,"91강",2,"인수분해 공식 (1). (2)",16,"P109",""],[1,"92강",2,"인수분해 공식 (3)",13,"P110",""],[1,"93강",2,"인수분해 공식 (4)",14,"P111",""],[1,"94강",2,"탄탄한 중단원 문제 (인수분해)",15,"P112~113",""],[1,"95강",2,"이차방정식과 그 해",12,"P114",""],[1,"96강",2,"인수분해를 이용한 이차방정식의 풀이",13,"P115",""],[1,"97강",2,"이차방정식의 중근",10,"P116",""],[1,"98강",2,"제곱근을 이용한 이차방정식의 풀이",10,"P117",""],[1,"99강",2,"완전제곱식을 이용한 이차방정식의 풀이",13,"P118",""],[1,"100강",2,"이차방정식의 근의 공식",18,"P119",""],[1,"101강",2,"복잡한 이차방정식의 풀이",18,"P120",""],[1,"102강",2,"이차방정식의 활용",11,"P121",""],[1,"103강",2,"탄탄한 중단원 문제 (이차방정식)",16,"P122~123",""],[1,"기출",3,"영역별 기출 (문자와 식)",0,"","단원 마무리 기출"],[2,"104강",0,"순서쌍과 좌표",12,"P126",""],[2,"105강",0,"사분면",10,"P127",""],[2,"106강",0,"그래프",8,"P128",""],[2,"107강",0,"정비례 관계와 그 그래프",11,"P129",""],[2,"108강",0,"정비례 관계의 활용",8,"P130",""],[2,"109강",0,"반비례 관계와 그 그래프",11,"P131",""],[2,"110강",0,"반비례 관계의 활용",7,"P132",""],[2,"111강",0,"탄탄한 중단원 문제 (좌표와 그래프)",14,"P133~134",""],[2,"112강",1,"함수와 함숫값",10,"P135",""],[2,"113강",1,"일차함수 y=ax+b (a≠0)의 그래프",12,"P136",""],[2,"114강",1,"일차함수의 그래프와 절편",8,"P137",""],[2,"115강",1,"일차함수의 그래프의 기울기",8,"P138",""],[2,"116강",1,"일차함수 y=ax+b의 그래프의 성질",7,"P139",""],[2,"117강",1,"일차함수의 그래프의 평행과 일치",7,"P140",""],[2,"118강",1,"일차함수의 그래프 그리기",9,"P141",""],[2,"119강",1,"일차함수의 식 구하기 (1)",8,"P142",""],[2,"120강",1,"일차함수의 식 구하기 (2)",9,"P143",""],[2,"121강",1,"일차함수의 활용",12,"P144",""],[2,"122강",1,"일차방정식의 그래프",10,"P145",""],[2,"123강",1,"일차함수와 일차방정식의 관계",15,"P146",""],[2,"124강",1,"일차방정식 x=a. y=b 의 그래프",11,"P147",""],[2,"125강",1,"연립방정식의 해와 일차함수의 그래프 사이의 관계",9,"P148",""],[2,"126강",1,"연립방정식의 해의 개수와 두 그래프의 위치 관계",14,"P149",""],[2,"127강",1,"탄탄한 중단원 문제 (일차함수)",15,"P150~151",""],[2,"128강",2,"이차함수와 함숫값",10,"P152",""],[2,"129강",2,"이차함수 y=x². y=-x² 의 그래프",8,"P153",""],[2,"130강",2,"이차함수 y=ax²의 그래프",10,"P154",""],[2,"131강",2,"이차함수 y=ax²+q 의 그래프",10,"P155",""],[2,"132강",2,"이차함수 y=a(x-p)² 의 그래프",10,"P156",""],[2,"133강",2,"이차함수 y=a(x-p)²+q 의 그래프",9,"P157",""],[2,"134강",2,"이차함수 y=ax²+bx+c 의 그래프",17,"P158",""],[2,"135강",2,"이차함수 y=ax²+bx+c 의 그래프의 평행이동",17,"P159",""],[2,"136강",2,"이차함수 y=ax²+bx+c의 그래프에서 a. b. c의 부호",10,"P160",""],[2,"137강",2,"이차함수의 식 구하기 (1)",11,"P161",""],[2,"138강",2,"이차함수의 식 구하기 (2)",14,"P162",""],[2,"139강",2,"이차함수의 식 구하기 (3)",19,"P163",""],[2,"140강",2,"탄탄한 중단원 문제 (이차함수)",20,"P164~165",""],[2,"기출",3,"영역별 기출 (함수)",0,"","단원 마무리 기출"],[3,"141강",0,"줄기와 잎 그림",13,"P168",""],[3,"142강",0,"도수분포표",12,"P169",""],[3,"143강",0,"히스토그램",10,"P170",""],[3,"144강",0,"도수분포다각형",11,"P171",""],[3,"145강",0,"상대도수",12,"P172",""],[3,"146강",0,"상대도수의 분포를 나타낸 그래프",11,"P173",""],[3,"147강",0,"탄탄한 중단원 문제 (도수분포와 그래프)",15,"P174~175",""],[3,"148강",1,"경우의 수",10,"P176",""],[3,"149강",1,"동전. 주사위를 던지는 경우의 수",11,"P177",""],[3,"150강",1,"한 줄로 세우는 경우의 수",9,"P178",""],[3,"151강",1,"정수를 만드는 경우의 수",10,"P179",""],[3,"152강",1,"대표를 뽑는 경우의 수",13,"P180",""],[3,"153강",1,"확률의 뜻과 성질",9,"P181",""],[3,"154강",1,"확률의 계산",9,"P182",""],[3,"155강",1,"연속하여 뽑는 경우의 확률",7,"P183",""],[3,"156강",1,"탄탄한 중단원 문제 (경우의 수와 확률)",17,"P184~185",""],[3,"157강",2,"평균. 중앙값. 최빈값",11,"P186",""],[3,"158강",2,"분산과 표준편차",10,"P187",""],[3,"159강",2,"산점도",10,"P188",""],[3,"160강",2,"상관관계",7,"P189",""],[3,"161강",2,"탄탄한 중단원 문제 (대푯값과 산포도)",15,"P190~191",""],[3,"기출",3,"영역별 기출 (확률과 통계)",0,"","단원 마무리 기출"],[4,"162강",0,"도형 / 직선. 반직선. 선분",14,"P194",""],[4,"163강",0,"두 점 사이의 거리",11,"P195",""],[4,"164강",0,"각",9,"P196",""],[4,"165강",0,"수직과 수선",7,"P197",""],[4,"166강",0,"점과 직선. 점과 평면의 위치 관계 / 평면에서 두 직선의 위치 관계",10,"P198",""],[4,"167강",0,"공간에서 두 직선의 위치 관계",11,"P199",""],[4,"168강",0,"공간에서 직선과 평면의 위치 관계",9,"P200",""],[4,"169강",0,"공간에서 두 평면의 위치 관계",11,"P201",""],[4,"170강",0,"동위각과 엇각 / 평행선의 성질",10,"P202",""],[4,"171강",0,"두 직선이 평행할 조건",8,"P203",""],[4,"172강",0,"탄탄한 중단원 문제 (기본 도형)",16,"P204~205",""],[4,"173강",0,"작도",8,"P206",""],[4,"174강",0,"삼각형",12,"P207",""],[4,"175강",0,"삼각형의 작도",8,"P208",""],[4,"176강",0,"삼각형이 하나로 정해지는 조건",16,"P209",""],[4,"177강",0,"도형의 합동",10,"P210",""],[4,"178강",0,"삼각형의 합동조건",12,"P211",""],[4,"179강",0,"탄탄한 중단원 문제 (작도와 합동)",19,"P212~213",""],[4,"180강",0,"다각형",8,"P214",""],[4,"181강",0,"대각선",9,"P215",""],[4,"182강",0,"삼각형의 내각과 외각의 크기",9,"P216",""],[4,"183강",0,"다각형의 내각과 외각의 크기",14,"P217",""],[4,"184강",0,"정다각형의 한 내각과 한 외각의 크기",10,"P218",""],[4,"185강",0,"원과 부채꼴",6,"P219",""],[4,"186강",0,"부채꼴의 성질",8,"P220",""],[4,"187강",0,"부채꼴의 호의 길이와 넓이",12,"P221",""],[4,"188강",0,"탄탄한 중단원 문제 (평면도형의 성질)",15,"P222~223",""],[4,"189강",0,"다면체",8,"P224",""],[4,"190강",0,"정다면체",10,"P225",""],[4,"191강",0,"회전체",7,"P226",""],[4,"192강",0,"회전체의 성질",7,"P227",""],[4,"193강",0,"회전체의 전개도",6,"P228",""],[4,"194강",0,"각기둥의 겉넓이와 부피",11,"P229",""],[4,"195강",0,"원기둥의 겉넓이와 부피",8,"P230",""],[4,"196강",0,"각뿔의 겉넓이와 부피",8,"P231",""],[4,"197강",0,"원뿔의 겉넓이와 부피",13,"P232",""],[4,"198강",0,"구의 겉넓이와 부피",13,"P233",""],[4,"199강",0,"탄탄한 중단원 문제 (입체도형의 성질)",16,"P234~235",""],[4,"200강",1,"이등변삼각형",11,"P236",""],[4,"201강",1,"이등변삼각형이 되는 조건",16,"P237",""],[4,"202강",1,"직각삼각형의 합동조건",13,"P238",""],[4,"203강",1,"외심의 뜻과 성질",9,"P239",""],[4,"204강",1,"삼각형의 외심의 활용",8,"P240",""],[4,"205강",1,"내심의 뜻과 성질",9,"P241",""],[4,"206강",1,"삼각형의 내심의 활용",7,"P242",""],[4,"207강",1,"삼각형의 내심과 평행선",7,"P243",""],[4,"208강",1,"삼각형의 내접원의 활용",7,"P244",""],[4,"209강",1,"탄탄한 중단원 문제 (삼각형의 성질)",17,"P245~246",""],[4,"210강",1,"평행사변형",9,"P247",""],[4,"211강",1,"평행사변형이 되는 조건",12,"P248",""],[4,"212강",1,"평행사변형과 넓이",6,"P249",""],[4,"213강",1,"직사각형",9,"P250",""],[4,"214강",1,"마름모",10,"P251",""],[4,"215강",1,"정사각형",8,"P252",""],[4,"216강",1,"사다리꼴과 등변사다리꼴",12,"P253",""],[4,"217강",1,"여러 가지 사각형",10,"P254",""],[4,"218강",1,"평행선과 삼각형의 넓이",7,"P255",""],[4,"219강",1,"높이가 같은 두 삼각형의 넓이의 비",9,"P256",""],[4,"220강",1,"탄탄한 중단원 문제 (사각형의 성질)",14,"P257~258",""],[4,"221강",1,"닮은 도형",11,"P259",""],[4,"222강",1,"삼각형의 닮음조건",17,"P260",""],[4,"223강",1,"직각삼각형에서의 닮음",12,"P261",""],[4,"224강",1,"삼각형에서의 평행선",15,"P262",""],[4,"225강",1,"삼각형의 내각과 외각의 이등분선",11,"P263",""],[4,"226강",1,"평행선 사이의 선분의 길이의 비",11,"P264",""],[4,"227강",1,"사다리꼴에서 평행선과 선분의 길이의 비",12,"P265",""],[4,"228강",1,"평행선과 선분의 길이의 비의 응용",8,"P266",""],[4,"229강",1,"삼각형의 두 변의 중점을 연결한 선분의 성질",8,"P267",""],[4,"230강",1,"사다리꼴의 중점을 연결한 선분의 성질",10,"P268",""],[4,"231강",1,"삼각형의 중선과 무게중심",12,"P269",""],[4,"232강",1,"삼각형의 무게중심과 넓이",9,"P270",""],[4,"233강",1,"탄탄한 중단원 문제 (도형의 닮음)",20,"P271~272",""],[4,"234강",1,"피타고라스 정리",10,"P273",""],[4,"235강",1,"피타고라스 정리의 설명 방법 (1) - 유클리드",9,"P274",""],[4,"236강",1,"피타고라스 정리의 설명 방법 (2). (3) - 피타고라스. 바스카라",10,"P275",""],[4,"237강",1,"직각삼각형이 될 조건",12,"P276",""],[4,"238강",1,"탄탄한 중단원 문제 (피타고라스 정리)",14,"P277~278",""],[4,"239강",2,"삼각비",12,"P279",""],[4,"240강",2,"특수각의 삼각비",15,"P280",""],[4,"241강",2,"삼각비의 값",13,"P281",""],[4,"242강",2,"삼각비의 표",7,"P282",""],[4,"243강",2,"직각삼각형의 변의 길이",11,"P283",""],[4,"244강",2,"일반 삼각형의 변의 길이",12,"P284",""],[4,"245강",2,"삼각형의 높이",9,"P285",""],[4,"246강",2,"삼각형의 넓이",9,"P286",""],[4,"247강",2,"사각형의 넓이",11,"P287",""],[4,"248강",2,"탄탄한 중단원 문제 (삼각비)",16,"P288~289",""],[4,"249강",2,"현의 수직이등분선",10,"P290",""],[4,"250강",2,"현의 길이",7,"P291",""],[4,"251강",2,"원의 접선의 길이",6,"P292",""],[4,"252강",2,"삼각형의 내접원",11,"P293",""],[4,"253강",2,"원에 외접하는 사각형의 성질",7,"P294",""],[4,"254강",2,"원주각과 중심각",10,"P295",""],[4,"255강",2,"원주각의 크기와 호의 길이",9,"P296",""],[4,"256강",2,"네 점이 한 원 위에 있을 조건 - 원주각",8,"P297",""],[4,"257강",2,"원에 내접하는 사각형의 성질",7,"P298",""],[4,"258강",2,"사각형이 원에 내접하기 위한 조건",8,"P299",""],[4,"259강",2,"접선과 현이 이루는 각",9,"P300",""],[4,"260강",2,"두 원에서 접선과 현이 이루는 각",8,"P301",""],[4,"261강",2,"탄탄한 중단원 문제 (원의 성질)",13,"P302~303",""],[4,"기출",3,"영역별 기출 (기하)",0,"","단원 마무리 기출"]];
 
   function $(id) { return document.getElementById(id); }
   function esc(s) {
@@ -403,83 +462,118 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
     return null;
   }
   function valid(s) {
-    return s && typeof s === 'object' &&
-      Object.prototype.toString.call(s.members) === '[object Array]' &&
-      Object.prototype.toString.call(s.notices) === '[object Array]' &&
-      Object.prototype.toString.call(s.todos) === '[object Array]';
+    return !!(s && typeof s === 'object' && (s.personal || s.members || s.math || s.timer));
+  }
+  /* 이 페이지는 justice 한 명 전용이에요. 가족 게시판과 다른 구성원은 이전 저장 내용에서도 지워요. */
+  function dropOthers() {
+    var changed = false, k, i, gone = ['members', 'notices', 'todos', 'demo'];
+    for (k in state.personal) {
+      if (state.personal.hasOwnProperty(k) && k !== person) { delete state.personal[k]; changed = true; }
+    }
+    if (Object.prototype.toString.call(state.personal[person]) !== '[object Array]') { state.personal[person] = []; changed = true; }
+    for (i = 0; i < gone.length; i++) {
+      if (state[gone[i]] !== undefined) { delete state[gone[i]]; changed = true; }
+    }
+    return changed;
   }
   function ensureState() {
-    if (!state.personal || typeof state.personal !== 'object') { state.personal = {}; }
+    var changed = false;
+    if (!state.personal || typeof state.personal !== 'object') { state.personal = {}; changed = true; }
     if (!state.timer || typeof state.timer !== 'object') {
       state.timer = { total: 600, left: 600, endAt: 0, running: false, done: false, label: '' };
+      changed = true;
+    }
+    if (Object.prototype.toString.call(state.plans) !== '[object Array]') { state.plans = []; changed = true; }
+    if (!state.titleV2 || typeof state.family !== 'string' || !state.family) {
+      state.family = DEFAULT_TITLE;
+      state.titleV2 = true;
+      changed = true;
+    }
+    if (dropOthers()) { changed = true; }
+    if (applyCourses()) { changed = true; }
+    if (ensureMath()) { changed = true; }
+    if (changed) { save(); }
+  }
+  var COURSES = {
+    '수학 절대개념 234': { total: 234, unit: '' },
+    '통합과학 기초 씹어먹기': { total: 10, unit: '강' },
+    '국어 별별 단비(단계적 비문학)': { total: 10, unit: '강' }
+  };
+  var mathGrade = 'all', mathUnit = null, mathTodo = false;
+
+  function mathIsDone(i) { return state.math.done.charAt(i) === '1'; }
+  function mathCount() {
+    var n = 0;
+    for (var i = 0; i < MATH.length; i++) { if (mathIsDone(i)) { n++; } }
+    return n;
+  }
+  function syncMath() {
+    var k, i, it, n = mathCount();
+    for (k in state.personal) {
+      if (state.personal.hasOwnProperty(k)) {
+        for (i = 0; i < state.personal[k].length; i++) {
+          it = state.personal[k][i];
+          if (it.link === 'math') {
+            it.total = MATH.length;
+            it.unit = '';
+            it.progress = n;
+            it.done = n >= MATH.length;
+          }
+        }
+      }
     }
   }
-  function plusDays(n) {
-    var d = new Date();
-    d.setDate(d.getDate() + n);
-    return dateStr(d);
+  function ensureMath() {
+    var changed = false, k, i, it;
+    if (!state.math || typeof state.math.done !== 'string') {
+      state.math = { done: MATH_DONE0 };
+      changed = true;
+    }
+    while (state.math.done.length < MATH.length) { state.math.done += '0'; changed = true; }
+    for (k in state.personal) {
+      if (state.personal.hasOwnProperty(k)) {
+        for (i = 0; i < state.personal[k].length; i++) {
+          it = state.personal[k][i];
+          if (it.text === '수학 절대개념 234' && it.link === undefined) { it.link = 'math'; changed = true; }
+        }
+      }
+    }
+    syncMath();
+    return changed;
+  }
+  function applyCourses() {
+    var k, i, it, c, changed = false;
+    for (k in state.personal) {
+      if (state.personal.hasOwnProperty(k)) {
+        for (i = 0; i < state.personal[k].length; i++) {
+          it = state.personal[k][i];
+          c = COURSES[it.text];
+          if (c && it.total === undefined) {
+            it.total = c.total;
+            it.unit = c.unit;
+            it.progress = it.done ? c.total : 0;
+            changed = true;
+          }
+        }
+      }
+    }
+    return changed;
+  }
+  function addRealSeed() {
+    state.personal.m4 = [
+      { id: uid() + 'j1', text: '수학 절대개념 234', due: '', done: false, total: 234, unit: '', progress: 0 },
+      { id: uid() + 'j2', text: '통합과학 기초 씹어먹기', due: '', done: false, total: 10, unit: '강', progress: 0 },
+      { id: uid() + 'j3', text: '국어 별별 단비(단계적 비문학)', due: '', done: false, total: 10, unit: '강', progress: 0 }
+    ];
   }
   function makeSeed() {
-    var m = [
-      { id: 'm1', name: '엄마', color: COLORS[1] },
-      { id: 'm2', name: '아빠', color: COLORS[0] },
-      { id: 'm3', name: 'choice', color: COLORS[2] },
-      { id: 'm4', name: 'justice', color: COLORS[3] }
-    ];
-    var now = new Date().getTime();
-    return {
-      family: '우리집',
-      demo: true,
-      personal: {
-        m1: [
-          { id: uid() + 'p1', text: '병원 예약 전화하기', due: plusDays(2), done: false }
-        ],
-        m3: [
-          { id: uid() + 'p2', text: '수학 숙제 끝내기', due: plusDays(1), done: false },
-          { id: uid() + 'p3', text: '책 30분 읽기', due: '', done: false }
-        ]
-      },
-      members: m,
-      notices: [
-        { id: uid() + 'a', text: '토요일 저녁 6시, 외할머니 댁에서 가족 식사해요.\n5시 반에 출발할 거예요.', important: true, created: now },
-        { id: uid() + 'b', text: '분리수거는 수요일 저녁이에요. 상자는 테이프를 떼고 접어서 내놓기.', important: false, created: now - 1000 }
-      ],
-      todos: [
-        { id: uid() + 'c', text: '분리수거 내놓기', who: 'm2', due: plusDays(3), done: false },
-        { id: uid() + 'd', text: '장보기 (우유, 계란, 두부)', who: 'm1', due: plusDays(1), done: false },
-        { id: uid() + 'e', text: '방 정리하기', who: 'm3', due: plusDays(0), done: false },
-        { id: uid() + 'f', text: '화분에 물 주기', who: 'm4', due: plusDays(2), done: false },
-        { id: uid() + 'g', text: '거실 같이 청소하기', who: '', due: '', done: true }
-      ]
-    };
+    return { family: DEFAULT_TITLE, titleV2: true, personal: {}, plans: [] };
   }
 
   /* ---------- 그리기 ---------- */
   function renderTitle() {
-    $('title').innerHTML = esc(state.family) + ' 게시판';
-    document.title = state.family + ' 게시판';
-  }
-
-  function renderChips() {
-    var h = '<button type="button" class="chip' + (filter === 'all' ? ' on' : '') + '" data-act="filter" data-id="all">전체</button>';
-    for (var i = 0; i < state.members.length; i++) {
-      var m = state.members[i];
-      var on = filter === m.id;
-      h += '<button type="button" class="chip' + (on ? ' on' : '') + '" data-act="filter" data-id="' + esc(m.id) + '"' +
-        (on ? ' style="background:' + m.color + ';border-color:' + m.color + '"' : '') + '>' + esc(m.name) + '</button>';
-    }
-    $('chips').innerHTML = h;
-  }
-
-  function renderSelect() {
-    var sel = $('todoWho');
-    var prev = sel.value;
-    var h = '<option value="">모두</option>';
-    for (var i = 0; i < state.members.length; i++) {
-      h += '<option value="' + esc(state.members[i].id) + '">' + esc(state.members[i].name) + '</option>';
-    }
-    sel.innerHTML = h;
-    if (prev && findById(state.members, prev)) { sel.value = prev; }
+    $('title').innerHTML = esc(state.family);
+    document.title = state.family;
   }
 
   function dueHtml(t) {
@@ -491,85 +585,7 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
     else if (diff === -1) { label = '어제'; if (!t.done) { cls += ' late'; } }
     else { label = shortDate(t.due); if (diff < 0 && !t.done) { cls += ' late'; } }
     if (diff < 0 && !t.done) { label += ' 지남'; }
-    return '<span class="' + cls + '">기한 ' + label + '</span>';
-  }
-
-  function whoHtml(t) {
-    var m = t.who ? findById(state.members, t.who) : null;
-    if (!m) { return '<span class="who common">모두</span>'; }
-    return '<span class="who" style="background:' + m.color + '">' + esc(m.name) + '</span>';
-  }
-
-  function renderTodos() {
-    var list = [];
-    var open = 0, done = 0, i;
-    for (i = 0; i < state.todos.length; i++) {
-      var t = state.todos[i];
-      if (filter !== 'all' && t.who !== '' && t.who !== filter) { continue; }
-      list.push({ t: t, i: i });
-      if (t.done) { done++; } else { open++; }
-    }
-    list.sort(function (a, b) {
-      var ad = a.t.done ? 1 : 0, bd = b.t.done ? 1 : 0;
-      if (ad !== bd) { return ad - bd; }
-      var au = a.t.due || '9999-99-99', bu = b.t.due || '9999-99-99';
-      if (au !== bu) { return au < bu ? -1 : 1; }
-      return a.i - b.i;
-    });
-    var h = '';
-    for (i = 0; i < list.length; i++) {
-      var x = list[i].t;
-      h += '<div class="todo' + (x.done ? ' done' : '') + '">' +
-        '<button type="button" class="box" data-act="toggle-todo" data-id="' + esc(x.id) + '" aria-label="완료 표시">' + (x.done ? '✓' : '') + '</button>' +
-        '<div class="main"><div class="txt">' + esc(x.text) + '</div>' +
-        '<div class="meta">' + whoHtml(x) + dueHtml(x) + '</div></div>' +
-        '<button type="button" class="edit" data-act="edit-todo" data-id="' + esc(x.id) + '">수정</button>' +
-        '<button type="button" class="del" data-act="del-todo" data-id="' + esc(x.id) + '">삭제</button>' +
-        '</div>';
-    }
-    if (!list.length) { h = '<p class="empty">할 일이 없어요. 위에서 추가해 보세요.</p>'; }
-    $('todoList').innerHTML = h;
-    $('todoCount').innerHTML = '남은 일 ' + open + '개 · 완료 ' + done + '개';
-    renderPersonal();
-  }
-
-  function renderNotices() {
-    var list = [];
-    for (var i = 0; i < state.notices.length; i++) { list.push(state.notices[i]); }
-    list.sort(function (a, b) {
-      var ai = a.important ? 1 : 0, bi = b.important ? 1 : 0;
-      if (ai !== bi) { return bi - ai; }
-      return b.created - a.created;
-    });
-    var h = '';
-    for (var j = 0; j < list.length; j++) {
-      var n = list[j];
-      var d = new Date(n.created);
-      h += '<div class="notice' + (n.important ? ' imp' : '') + '">' +
-        (n.important ? '<span class="tag">중요</span>' : '') +
-        '<div class="body">' + esc(n.text) + '</div>' +
-        '<div class="foot"><span class="date">' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일</span>' +
-        '<button type="button" class="btn small ghost" data-act="edit-notice" data-id="' + esc(n.id) + '">수정</button>' +
-        '<button type="button" class="btn small ghost" data-act="pin-notice" data-id="' + esc(n.id) + '">' + (n.important ? '중요 해제' : '중요 표시') + '</button>' +
-        '<button type="button" class="btn small danger" data-act="del-notice" data-id="' + esc(n.id) + '">삭제</button>' +
-        '</div></div>';
-    }
-    if (!list.length) { h = '<p class="empty">올라온 공지가 없어요.</p>'; }
-    $('noticeList').innerHTML = h;
-    $('noticeCount').innerHTML = list.length + '개';
-  }
-
-  function renderMembers() {
-    var h = '';
-    for (var i = 0; i < state.members.length; i++) {
-      var m = state.members[i];
-      h += '<div class="mrow"><span class="dot" style="background:' + m.color + '"></span>' +
-        '<span class="mname">' + esc(m.name) + '</span>' +
-        '<button type="button" class="btn small ghost" style="margin-right:8px" data-act="edit-member" data-id="' + esc(m.id) + '">수정</button>' +
-        '<button type="button" class="btn small danger" data-act="del-member" data-id="' + esc(m.id) + '">삭제</button></div>';
-    }
-    if (!state.members.length) { h = '<p>구성원이 없어요. 아래에서 추가해 주세요.</p>'; }
-    $('memberList').innerHTML = h;
+    return '<span class="' + cls + '">목표 ' + label + '</span>';
   }
 
   function cmpItems(a, b) {
@@ -580,42 +596,118 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
     return a.i - b.i;
   }
 
-  function personalRow(x, fromFamily) {
-    var h = '<div class="todo' + (x.done ? ' done' : '') + '">' +
-      '<button type="button" class="box" data-act="' + (fromFamily ? 'toggle-todo' : 'toggle-ptodo') + '" data-id="' + esc(x.id) + '" aria-label="완료 표시">' + (x.done ? '✓' : '') + '</button>' +
-      '<div class="main"><div class="txt">' + esc(x.text) + '</div>' +
-      '<div class="meta">' + dueHtml(x) + '</div></div>';
-    h += '<button type="button" class="edit" data-act="' + (fromFamily ? 'edit-todo' : 'edit-ptodo') + '" data-id="' + esc(x.id) + '">수정</button>';
-    if (!fromFamily) {
-      h += '<button type="button" class="del" data-act="del-ptodo" data-id="' + esc(x.id) + '">삭제</button>';
+  function pctN(a, b) { return b > 0 ? Math.round(a / b * 100) : 0; }
+
+  function srowHtml(name, d, t) {
+    var p = pctN(d, t);
+    return '<div class="srow"><span class="sname">' + esc(name) + '</span>' +
+      '<div class="sbar"><div class="pbar"><i style="width:' + p + '%"></i></div></div>' +
+      '<span class="stxt">' + d + '/' + t + ' · ' + p + '%</span></div>';
+  }
+
+  function renderMath() {
+    var i, h, r, dn, n = MATH.length, done = 0, remain = 0;
+    var uTot = [], uDone = [], gTot = [], gDone = [];
+    for (i = 0; i < MATH_UNITS.length; i++) { uTot.push(0); uDone.push(0); }
+    for (i = 0; i < MATH_GRADES.length; i++) { gTot.push(0); gDone.push(0); }
+    for (i = 0; i < n; i++) {
+      r = MATH[i];
+      uTot[r[0]]++;
+      gTot[r[2]]++;
+      if (mathIsDone(i)) { uDone[r[0]]++; gDone[r[2]]++; done++; } else { remain += r[4]; }
     }
-    return h + '</div>';
+    if (mathUnit === null) {
+      mathUnit = 'all';
+      for (i = 0; i < MATH_UNITS.length; i++) { if (uDone[i] < uTot[i]) { mathUnit = i; break; } }
+    }
+    var pct = pctN(done, n);
+    $('mathCount').innerHTML = done + ' / ' + n + ' · ' + pct + '%';
+    $('mathRate').innerHTML = '<div class="ptxt">전체 달성률 ' + pct + '%</div>' +
+      '<div class="pbar big"><i style="width:' + pct + '%"></i></div>' +
+      '<div class="lbl" style="margin-top:6px">남은 강의 시간 약 ' + (Math.round(remain / 6) / 10) + '시간</div>';
+
+    h = '<div class="lbl" style="margin-bottom:6px">대단원별</div>';
+    for (i = 0; i < MATH_UNITS.length; i++) { h += srowHtml(MATH_UNITS[i], uDone[i], uTot[i]); }
+    h += '<div class="lbl" style="margin:10px 0 6px">학년별</div>';
+    for (i = 0; i < MATH_GRADES.length; i++) { h += srowHtml(MATH_GRADES[i], gDone[i], gTot[i]); }
+    $('mathSummary').innerHTML = h;
+
+    h = '<button type="button" class="chip' + (mathGrade === 'all' ? ' on' : '') + '" data-act="math-grade" data-id="all">전체</button>';
+    for (i = 0; i < MATH_GRADES.length; i++) {
+      h += '<button type="button" class="chip' + (mathGrade === i ? ' on' : '') + '" data-act="math-grade" data-id="' + i + '">' + esc(MATH_GRADES[i]) + '</button>';
+    }
+    $('mathGradeChips').innerHTML = h;
+    h = '<button type="button" class="chip' + (mathUnit === 'all' ? ' on' : '') + '" data-act="math-unit" data-id="all">전체</button>';
+    for (i = 0; i < MATH_UNITS.length; i++) {
+      h += '<button type="button" class="chip' + (mathUnit === i ? ' on' : '') + '" data-act="math-unit" data-id="' + i + '">' + esc(MATH_UNITS[i]) + '</button>';
+    }
+    $('mathUnitChips').innerHTML = h;
+
+    var showGrade = mathGrade === 'all', lastU = -1, shown = 0, isEx;
+    h = '';
+    for (i = 0; i < n; i++) {
+      r = MATH[i];
+      dn = mathIsDone(i);
+      if (mathGrade !== 'all' && r[2] !== mathGrade) { continue; }
+      if (mathUnit !== 'all' && r[0] !== mathUnit) { continue; }
+      if (mathTodo && dn) { continue; }
+      if (mathUnit === 'all' && r[0] !== lastU) {
+        lastU = r[0];
+        h += '<div class="mhead">' + esc(MATH_UNITS[lastU]) + '<span>' + uDone[lastU] + '/' + uTot[lastU] + '</span></div>';
+      }
+      isEx = r[1] === '기출';
+      h += '<div class="todo compact' + (dn ? ' done' : '') + '">' +
+        '<button type="button" class="box" data-act="math-toggle" data-id="' + i + '" aria-label="완료 표시">' + (dn ? '✓' : '') + '</button>' +
+        '<div class="main"><div class="txt">' + (isEx ? '' : esc(r[1]) + ' ') + esc(r[3]) + '</div>' +
+        '<div class="meta">' +
+        (showGrade ? '<span class="who" style="background:' + (isEx ? '#c2583a' : '#6b7a8a') + '">' + esc(MATH_GRADES[r[2]]) + '</span>' : '') +
+        '<span class="due">' + (r[4] ? r[4] + '분' : '') + (r[4] && r[5] ? ' · ' : '') + esc(r[5]) + '</span>' +
+        (r[6] ? '<span class="mnote">' + esc(r[6]) + '</span>' : '') +
+        '</div></div></div>';
+      shown++;
+    }
+    if (!shown) { h = '<p class="empty">조건에 맞는 강의가 없어요.</p>'; }
+    $('mathList').innerHTML = h;
+  }
+
+  function pctOf(x) {
+    return x.total > 0 ? Math.min(100, Math.round((x.progress || 0) / x.total * 100)) : 0;
+  }
+
+  function progressHtml(x) {
+    if (!(x.total > 0)) { return ''; }
+    var p = x.progress || 0, pct = pctOf(x), u = x.unit ? esc(x.unit) : '';
+    if (x.link === 'math') {
+      return '<div class="pbar"><i style="width:' + pct + '%"></i></div>' +
+        '<div class="prow"><span class="ptxt">' + p + ' / ' + x.total + ' · ' + pct + '%</span>' +
+        '<span class="lbl">아래 수학 학습목차에서 체크하면 자동으로 계산돼요</span></div>';
+    }
+    return '<div class="pbar"><i style="width:' + pct + '%"></i></div>' +
+      '<div class="prow"><span class="ptxt">' + p + u + ' / ' + x.total + u + ' · ' + pct + '%</span>' +
+      '<input type="number" class="inp pin" id="pgin-' + esc(x.id) + '" value="' + p + '" min="0" max="' + x.total + '">' +
+      '<button type="button" class="btn small" data-act="prog-save" data-id="' + esc(x.id) + '">저장</button>' +
+      '<button type="button" class="btn small ghost" data-act="prog-plus" data-id="' + esc(x.id) + '">+1</button></div>';
+  }
+
+  function setProgress(item, v) {
+    item.progress = v;
+    item.done = v >= item.total;
+    save();
+    renderPersonal();
+  }
+
+  function personalRow(x) {
+    return '<div class="todo' + (x.done ? ' done' : '') + '">' +
+      '<button type="button" class="box" data-act="toggle-ptodo" data-id="' + esc(x.id) + '" aria-label="완료 표시">' + (x.done ? '✓' : '') + '</button>' +
+      '<div class="main"><div class="txt">' + esc(x.text) + '</div>' +
+      '<div class="meta">' + dueHtml(x) + '</div>' + progressHtml(x) + '</div>' +
+      '<button type="button" class="edit" data-act="edit-ptodo" data-id="' + esc(x.id) + '">수정</button>' +
+      '<button type="button" class="del" data-act="del-ptodo" data-id="' + esc(x.id) + '">삭제</button>' +
+      '</div>';
   }
 
   function renderPersonal() {
-    var i, h, it;
-    if (!state.members.length) {
-      $('personChips').innerHTML = '<p class="empty">설정에서 가족 구성원을 먼저 추가해 주세요.</p>';
-      $('pTitle').innerHTML = '개인 할 일';
-      $('pCount').innerHTML = '';
-      $('pList').innerHTML = '';
-      $('fCount').innerHTML = '';
-      $('fList').innerHTML = '';
-      return;
-    }
-    if (!person || !findById(state.members, person)) { person = state.members[0].id; }
-    var me = findById(state.members, person);
-
-    h = '';
-    for (i = 0; i < state.members.length; i++) {
-      var m = state.members[i];
-      var on = person === m.id;
-      h += '<button type="button" class="chip' + (on ? ' on' : '') + '" data-act="pick-person" data-id="' + esc(m.id) + '"' +
-        (on ? ' style="background:' + m.color + ';border-color:' + m.color + '"' : '') + '>' + esc(m.name) + '</button>';
-    }
-    $('personChips').innerHTML = h;
-    $('pTitle').innerHTML = esc(me.name) + ' 님의 개인 할 일';
-
+    var i, h;
     var mine = state.personal[person] || [];
     var list = [], open = 0, done = 0;
     for (i = 0; i < mine.length; i++) {
@@ -624,25 +716,24 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
     }
     list.sort(cmpItems);
     h = '';
-    for (i = 0; i < list.length; i++) { h += personalRow(list[i].t, false); }
-    if (!list.length) { h = '<p class="empty">개인 할 일이 없어요. 위에서 추가해 보세요.</p>'; }
+    for (i = 0; i < list.length; i++) { h += personalRow(list[i].t); }
+    if (!list.length) { h = '<p class="empty">진도 항목이 없어요. 위에서 추가해 보세요.</p>'; }
     $('pList').innerHTML = h;
     $('pCount').innerHTML = '남은 일 ' + open + '개 · 완료 ' + done + '개';
-
-    var fam = [], fo = 0, fd = 0;
-    for (i = 0; i < state.todos.length; i++) {
-      it = state.todos[i];
-      if (it.who === person) {
-        fam.push({ t: it, i: i });
-        if (it.done) { fd++; } else { fo++; }
-      }
+    var tr = 0, tn = 0;
+    for (i = 0; i < mine.length; i++) {
+      if (mine[i].total > 0) { tn++; tr += pctOf(mine[i]); }
     }
-    fam.sort(cmpItems);
-    h = '';
-    for (i = 0; i < fam.length; i++) { h += personalRow(fam[i].t, true); }
-    if (!fam.length) { h = '<p class="empty">가족 게시판에서 맡은 일이 없어요.</p>'; }
-    $('fList').innerHTML = h;
-    $('fCount').innerHTML = '남은 일 ' + fo + '개 · 완료 ' + fd + '개';
+    if (tn) {
+      var avg = Math.round(tr / tn);
+      $('pRate').innerHTML = '<div class="ptxt">전체 달성률 ' + avg + '%</div><div class="pbar big"><i style="width:' + avg + '%"></i></div>';
+      $('pRate').hidden = false;
+    } else {
+      $('pRate').innerHTML = '';
+      $('pRate').hidden = true;
+    }
+    $('pMsg').innerHTML = '';
+    renderMath();
   }
 
   /* ---------- 타이머 ---------- */
@@ -711,8 +802,8 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
 
   function setTabClasses() {
     var T = state.timer;
-    $('tabBoard').className = 'tab' + (view === 'board' ? ' on' : '');
     $('tabPersonal').className = 'tab' + (view === 'personal' ? ' on' : '');
+    $('tabCal').className = 'tab' + (view === 'cal' ? ' on' : '');
     $('tabTimer').className = 'tab' + (view === 'timer' ? ' on' : '') + (T && T.done ? ' alert' : '');
     var txt = '타이머';
     if (T && T.running) { txt = '타이머 ' + fmt(timerLeft()); }
@@ -811,22 +902,18 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
 
   function setView(v) {
     view = v;
-    $('viewBoard').className = 'view' + (v === 'board' ? '' : ' off');
     $('viewPersonal').className = 'view' + (v === 'personal' ? '' : ' off');
+    $('viewCal').className = 'view' + (v === 'cal' ? '' : ' off');
     $('viewTimer').className = 'view' + (v === 'timer' ? '' : ' off');
     setTabClasses();
     if (v === 'personal') { renderPersonal(); }
+    if (v === 'cal') { renderCal(); renderDay(); }
     if (v === 'timer') { renderTimer(); }
   }
 
   function renderAll() {
     renderTitle();
-    renderChips();
-    renderSelect();
-    renderTodos();
-    renderNotices();
     setView(view);
-    $('demo').hidden = !state.demo;
     $('warn').hidden = storageOk;
   }
 
@@ -839,115 +926,55 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
     $('clock').innerHTML = (d.getMonth() + 1) + '월 ' + d.getDate() + '일 ' + DAYS[d.getDay()] + '요일<br>' +
       '<span class="time">' + ap + ' ' + h12 + ':' + pad(d.getMinutes()) + '</span>';
     var t = todayStr();
-    if (lastDay && lastDay !== t) { renderTodos(); }
+    if (lastDay && lastDay !== t) { renderAll(); }
     lastDay = t;
   }
 
   /* ---------- 동작 ---------- */
-  function addTodo() {
-    var inp = $('todoText');
-    var text = inp.value.replace(/^\s+|\s+$/g, '');
-    if (!text) { inp.focus(); return; }
-    state.todos.push({ id: uid(), text: text, who: $('todoWho').value, due: $('todoDue').value, done: false });
-    inp.value = '';
-    $('todoDue').value = '';
-    save();
-    renderTodos();
-    inp.focus();
-  }
-
-  function addNotice() {
-    var inp = $('noticeText');
-    var text = inp.value.replace(/^\s+|\s+$/g, '');
-    if (!text) { inp.focus(); return; }
-    state.notices.push({ id: uid(), text: text, important: $('noticeImp').checked, created: new Date().getTime() });
-    inp.value = '';
-    $('noticeImp').checked = false;
-    save();
-    renderNotices();
-  }
-
-  function addMember() {
-    var inp = $('memberText');
-    var name = inp.value.replace(/^\s+|\s+$/g, '');
-    if (!name) { inp.focus(); return; }
-    var used = {}, i, color = null;
-    for (i = 0; i < state.members.length; i++) { used[state.members[i].color] = true; }
-    for (i = 0; i < COLORS.length; i++) { if (!used[COLORS[i]]) { color = COLORS[i]; break; } }
-    if (!color) { color = COLORS[state.members.length % COLORS.length]; }
-    state.members.push({ id: uid(), name: name, color: color });
-    inp.value = '';
-    save();
-    renderMembers();
-    renderChips();
-    renderSelect();
-  }
-
   function addPtodo() {
     if (!person) { return; }
     var inp = $('pText');
     var text = inp.value.replace(/^\s+|\s+$/g, '');
     if (!text) { inp.focus(); return; }
     if (!state.personal[person]) { state.personal[person] = []; }
-    state.personal[person].push({ id: uid(), text: text, due: $('pDue').value, done: false });
+    var item = { id: uid(), text: text, due: $('pDue').value, done: false };
+    var total = parseInt($('pTotal').value, 10);
+    if (total > 0) {
+      item.total = total;
+      item.unit = $('pUnit').value.replace(/^\s+|\s+$/g, '');
+      item.progress = 0;
+    }
+    state.personal[person].push(item);
     inp.value = '';
     $('pDue').value = '';
+    $('pTotal').value = '';
+    $('pUnit').value = '';
     save();
     renderPersonal();
     inp.focus();
   }
 
   /* ---------- 수정 창 ---------- */
-  var editing = null, edColor = '';
+  var editing = null;
 
   function getEditItem() {
     if (!editing) { return null; }
-    if (editing.kind === 'todo') { return findById(state.todos, editing.id); }
-    if (editing.kind === 'notice') { return findById(state.notices, editing.id); }
-    if (editing.kind === 'ptodo') { return findById(state.personal[editing.owner] || [], editing.id); }
-    if (editing.kind === 'member') { return findById(state.members, editing.id); }
-    return null;
+    return findById(state.personal[person] || [], editing.id);
   }
 
-  function renderEdColors() {
-    var h = '';
-    for (var i = 0; i < COLORS.length; i++) {
-      h += '<button type="button" class="swatch' + (COLORS[i] === edColor ? ' on' : '') + '" style="background:' + COLORS[i] + '" data-act="ed-color" data-id="' + i + '" aria-label="색 선택"></button>';
-    }
-    $('edColors').innerHTML = h;
-  }
-
-  function openEditor(kind, id) {
-    editing = { kind: kind, id: id, owner: kind === 'ptodo' ? person : null };
+  function openEditor(id) {
+    editing = { id: id };
     var item = getEditItem();
     if (!item) { editing = null; return; }
-    var titles = { todo: '할 일 수정', notice: '공지 수정', ptodo: '개인 할 일 수정', member: '가족 구성원 수정' };
-    var isMember = kind === 'member';
-    $('edTitle').innerHTML = titles[kind];
-    $('edNameRow').hidden = !isMember;
-    $('edColorRow').hidden = !isMember;
-    $('edTextRow').hidden = isMember;
-    $('edWhoRow').hidden = kind !== 'todo';
-    $('edDueRow').hidden = !(kind === 'todo' || kind === 'ptodo');
-    $('edImpRow').hidden = kind !== 'notice';
+    var tracked = item.total > 0;
+    $('edTitle').innerHTML = '진도 항목 수정';
+    $('edTrackRow').hidden = !!item.link;
     $('edMsg').innerHTML = '';
-    if (isMember) {
-      $('edName').value = item.name;
-      edColor = item.color;
-      renderEdColors();
-    } else {
-      $('edText').value = item.text;
-    }
-    if (kind === 'todo') {
-      var h = '<option value="">모두</option>';
-      for (var i = 0; i < state.members.length; i++) {
-        h += '<option value="' + esc(state.members[i].id) + '">' + esc(state.members[i].name) + '</option>';
-      }
-      $('edWho').innerHTML = h;
-      $('edWho').value = item.who || '';
-    }
-    if (kind === 'todo' || kind === 'ptodo') { $('edDue').value = item.due || ''; }
-    if (kind === 'notice') { $('edImp').checked = !!item.important; }
+    $('edText').value = item.text;
+    $('edDue').value = item.due || '';
+    $('edTotal').value = tracked ? item.total : '';
+    $('edUnit').value = tracked ? (item.unit || '') : '';
+    $('edProg').value = tracked ? (item.progress || 0) : '';
     $('editor').className = 'overlay editor open';
   }
 
@@ -959,26 +986,186 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
   function saveEditor() {
     var item = getEditItem();
     if (!item) { closeEditor(); return; }
-    var kind = editing.kind;
-    if (kind === 'member') {
-      var name = $('edName').value.replace(/^\s+|\s+$/g, '');
-      if (!name) { $('edMsg').innerHTML = '이름을 적어 주세요.'; return; }
-      item.name = name;
-      if (edColor) { item.color = edColor; }
+    var text = $('edText').value.replace(/^\s+|\s+$/g, '');
+    if (!text) { $('edMsg').innerHTML = '내용을 적어 주세요.'; return; }
+    item.text = text;
+    item.due = $('edDue').value;
+    var tot = parseInt($('edTotal').value, 10);
+    if (item.link) {
+      /* 학습목차와 연결된 항목은 자동으로 계산돼요 */
+    } else if (tot > 0) {
+      var prog = parseInt($('edProg').value, 10);
+      if (!(prog >= 0)) { prog = 0; }
+      if (prog > tot) { prog = tot; }
+      item.total = tot;
+      item.unit = $('edUnit').value.replace(/^\s+|\s+$/g, '');
+      item.progress = prog;
+      item.done = prog >= tot;
     } else {
-      var text = $('edText').value.replace(/^\s+|\s+$/g, '');
-      if (!text) { $('edMsg').innerHTML = '내용을 적어 주세요.'; return; }
-      item.text = text;
-      if (kind === 'todo') { item.who = $('edWho').value; item.due = $('edDue').value; }
-      if (kind === 'ptodo') { item.due = $('edDue').value; }
-      if (kind === 'notice') { item.important = $('edImp').checked; }
+      item.total = 0;
+      item.unit = '';
+      item.progress = 0;
     }
     save();
     closeEditor();
-    if (kind === 'member') { renderMembers(); renderAll(); }
-    else if (kind === 'notice') { renderNotices(); }
-    else if (kind === 'todo') { renderTodos(); }
-    else { renderPersonal(); }
+    renderPersonal();
+  }
+
+  /* ---------- 달력 ---------- */
+  var calYear = null, calMonth = 0, calSel = '';
+
+  function calReset() {
+    var d = new Date();
+    calYear = d.getFullYear();
+    calMonth = d.getMonth();
+    calSel = todayStr();
+  }
+
+  function calMove(delta) {
+    var m = calMonth + delta, y = calYear;
+    while (m < 0) { m += 12; y--; }
+    while (m > 11) { m -= 12; y++; }
+    calYear = y;
+    calMonth = m;
+    var now = new Date();
+    calSel = (y === now.getFullYear() && m === now.getMonth()) ? todayStr() : y + '-' + pad(m + 1) + '-01';
+  }
+
+  function nextDay(s) {
+    var d = parseDate(s);
+    d.setDate(d.getDate() + 1);
+    return dateStr(d);
+  }
+
+  function planLabel(p) {
+    var it = p.itemId ? findById(state.personal[person] || [], p.itemId) : null;
+    var subject = it ? it.text : (p.subject || '');
+    return subject + (subject && p.text ? ' · ' : '') + (p.text || '');
+  }
+
+  function renderCal() {
+    if (calYear === null) { calReset(); }
+    var i, h, day, ds, inf, cls, st, p, cell = 0;
+    var today = todayStr();
+    var items = state.personal[person] || [];
+    var ym = calYear + '-' + pad(calMonth + 1) + '-';
+    var info = {}, goals = {}, tot = 0, dn = 0;
+    for (i = 0; i < state.plans.length; i++) {
+      p = state.plans[i];
+      if (!info[p.date]) { info[p.date] = { n: 0, d: 0 }; }
+      info[p.date].n++;
+      if (p.done) { info[p.date].d++; }
+      if (p.date.indexOf(ym) === 0) { tot++; if (p.done) { dn++; } }
+    }
+    for (i = 0; i < items.length; i++) { if (items[i].due) { goals[items[i].due] = true; } }
+
+    $('calTitle').innerHTML = calYear + '년 ' + (calMonth + 1) + '월';
+    if (tot) {
+      var pct = pctN(dn, tot);
+      $('calStat').innerHTML = '<div class="ptxt">' + (calMonth + 1) + '월 학습 달성률 ' + pct + '% <span class="lbl">(완료 ' + dn + ' / 계획 ' + tot + ')</span></div>' +
+        '<div class="pbar big"><i style="width:' + pct + '%"></i></div>';
+    } else {
+      $('calStat').innerHTML = '<div class="lbl">이 달에는 세운 계획이 없어요. 날짜를 눌러 계획을 세워 보세요.</div>';
+    }
+
+    var first = new Date(calYear, calMonth, 1).getDay();
+    var dim = new Date(calYear, calMonth + 1, 0).getDate();
+    h = '<table class="cal"><thead><tr>';
+    for (i = 0; i < 7; i++) {
+      h += '<th class="' + (i === 0 ? 'sun' : (i === 6 ? 'sat' : '')) + '">' + DAYS[i] + '</th>';
+    }
+    h += '</tr></thead><tbody><tr>';
+    for (i = 0; i < first; i++) { h += '<td class="empty"></td>'; cell++; }
+    for (day = 1; day <= dim; day++) {
+      ds = ym + pad(day);
+      inf = info[ds];
+      cls = ds === today ? 'today' : '';
+      if (ds === calSel) { cls += ' sel'; }
+      h += '<td class="' + cls + '" data-act="cal-day" data-id="' + ds + '"><span class="dn">' + day + '</span><br>';
+      if (goals[ds]) { h += '<span class="goal">목표</span>'; }
+      if (inf) {
+        st = inf.d >= inf.n ? 'ok' : (ds < today ? 'miss' : 'plan');
+        h += '<span class="bdg ' + st + '">' + inf.d + '/' + inf.n + '</span>';
+      }
+      h += '</td>';
+      cell++;
+      if (cell % 7 === 0 && day < dim) { h += '</tr><tr>'; }
+    }
+    while (cell % 7 !== 0) { h += '<td class="empty"></td>'; cell++; }
+    h += '</tr></tbody></table>';
+    $('calGrid').innerHTML = h;
+  }
+
+  function renderCalSelects() {
+    var items = state.personal[person] || [];
+    var sel = $('planSubject'), prev = sel.value, h = '<option value="">직접 입력</option>', i;
+    for (i = 0; i < items.length; i++) { h += '<option value="' + esc(items[i].id) + '">' + esc(items[i].text) + '</option>'; }
+    sel.innerHTML = h;
+    if (prev && findById(items, prev)) { sel.value = prev; }
+    sel = $('goalItem');
+    prev = sel.value;
+    h = '';
+    for (i = 0; i < items.length; i++) { h += '<option value="' + esc(items[i].id) + '">' + esc(items[i].text) + '</option>'; }
+    sel.innerHTML = h;
+    if (prev && findById(items, prev)) { sel.value = prev; }
+    $('goalForm').hidden = !items.length;
+  }
+
+  function renderDay() {
+    if (calYear === null) { calReset(); }
+    var i, h, p, it, n = 0, miss;
+    var items = state.personal[person] || [];
+    var today = todayStr();
+    var d = parseDate(calSel);
+    $('dayTitle').innerHTML = (d.getMonth() + 1) + '월 ' + d.getDate() + '일 ' + DAYS[d.getDay()] + '요일' + (calSel === today ? ' · 오늘' : '');
+    h = '';
+    for (i = 0; i < items.length; i++) {
+      it = items[i];
+      if (it.due === calSel) {
+        h += '<div class="goalrow"><span class="goaltag">목표일</span><span class="gtxt">' + esc(it.text) +
+          (it.total > 0 ? ' · 달성 ' + pctOf(it) + '%' : '') + (it.done ? ' · 완료' : '') + '</span>' +
+          '<button type="button" class="btn small ghost" data-act="cal-cleargoal" data-id="' + esc(it.id) + '">해제</button></div>';
+      }
+    }
+    $('dayGoals').innerHTML = h;
+    h = '';
+    for (i = 0; i < state.plans.length; i++) {
+      p = state.plans[i];
+      if (p.date !== calSel) { continue; }
+      n++;
+      miss = !p.done && p.date < today;
+      h += '<div class="todo compact' + (p.done ? ' done' : '') + '">' +
+        '<button type="button" class="box" data-act="plan-toggle" data-id="' + esc(p.id) + '" aria-label="학습 체크">' + (p.done ? '✓' : '') + '</button>' +
+        '<div class="main"><div class="txt">' + esc(planLabel(p)) + '</div>' +
+        (miss ? '<div class="meta"><span class="due late">못 했어요</span></div>' : '') + '</div>' +
+        '<button type="button" class="edit" data-act="plan-next" data-id="' + esc(p.id) + '">내일로</button>' +
+        '<button type="button" class="del" data-act="plan-del" data-id="' + esc(p.id) + '">삭제</button></div>';
+    }
+    if (!n) { h = '<p class="empty" style="padding:10px 0 4px">이 날 세운 계획이 없어요. 아래에서 추가해 보세요.</p>'; }
+    $('dayPlans').innerHTML = h;
+    renderCalSelects();
+  }
+
+  function addPlan() {
+    if (calYear === null) { calReset(); }
+    var sid = $('planSubject').value;
+    var txt = $('planText').value.replace(/^\s+|\s+$/g, '');
+    var it = sid ? findById(state.personal[person] || [], sid) : null;
+    if (!it && !txt) { $('planText').focus(); return; }
+    state.plans.push({ id: uid(), date: calSel, itemId: it ? it.id : '', subject: it ? it.text : '', text: txt, done: false });
+    $('planText').value = '';
+    save();
+    renderCal();
+    renderDay();
+  }
+
+  function setGoal(itemId, date) {
+    var it = findById(state.personal[person] || [], itemId);
+    if (!it) { return; }
+    it.due = date;
+    save();
+    renderCal();
+    renderDay();
   }
 
   function openSettings() {
@@ -986,7 +1173,6 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
     $('backupOut').value = JSON.stringify(state);
     $('backupIn').value = '';
     $('importMsg').innerHTML = '';
-    renderMembers();
     $('settings').className = 'overlay open';
   }
 
@@ -1003,13 +1189,10 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
     if (!window.confirm('지금 내용을 지우고 불러올까요?')) { return; }
     state = obj;
     ensureState();
-    if (typeof state.family !== 'string' || !state.family) { state.family = '우리집'; }
-    filter = 'all';
     save();
     $('familyInput').value = state.family;
     $('backupOut').value = JSON.stringify(state);
     $('backupIn').value = '';
-    renderMembers();
     renderAll();
     timerInit();
     $('importMsg').innerHTML = '불러왔어요.';
@@ -1017,76 +1200,20 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
 
   function handle(act, id) {
     var t;
-    if (act === 'toggle-todo') {
-      t = findById(state.todos, id);
-      if (t) { t.done = !t.done; save(); renderTodos(); }
-    } else if (act === 'del-todo') {
-      if (window.confirm('이 할 일을 지울까요?')) { removeById(state.todos, id); save(); renderTodos(); }
-    } else if (act === 'add-todo') {
-      addTodo();
-    } else if (act === 'clear-date') {
-      $('todoDue').value = '';
-    } else if (act === 'clear-done') {
-      if (window.confirm('완료한 할 일을 모두 지울까요?')) {
-        var keep = [];
-        for (var i = 0; i < state.todos.length; i++) { if (!state.todos[i].done) { keep.push(state.todos[i]); } }
-        state.todos = keep;
-        save();
-        renderTodos();
-      }
-    } else if (act === 'filter') {
-      filter = id;
-      renderChips();
-      renderTodos();
-    } else if (act === 'add-notice') {
-      addNotice();
-    } else if (act === 'pin-notice') {
-      t = findById(state.notices, id);
-      if (t) { t.important = !t.important; save(); renderNotices(); }
-    } else if (act === 'del-notice') {
-      if (window.confirm('이 공지를 지울까요?')) { removeById(state.notices, id); save(); renderNotices(); }
-    } else if (act === 'clear-demo') {
-      if (window.confirm('예시로 들어 있는 공지와 할 일을 모두 지울까요?')) {
-        state.notices = []; state.todos = []; state.personal = {}; state.demo = false;
-        save();
-        renderAll();
-      }
-    } else if (act === 'open-settings') {
+    if (act === 'open-settings') {
       openSettings();
     } else if (act === 'close-settings') {
       closeSettings();
-    } else if (act === 'add-member') {
-      addMember();
-    } else if (act === 'del-member') {
-      t = findById(state.members, id);
-      if (t && window.confirm(t.name + ' 님을 구성원에서 뺄까요? 맡은 가족 할 일은 "모두"로 바뀌고, 개인 할 일은 지워져요.')) {
-        removeById(state.members, id);
-        delete state.personal[id];
-        for (var k = 0; k < state.todos.length; k++) { if (state.todos[k].who === id) { state.todos[k].who = ''; } }
-        if (filter === id) { filter = 'all'; }
-        save();
-        renderMembers();
-        renderAll();
-      }
     } else if (act === 'tab') {
       setView(id);
-    } else if (act === 'edit-todo') {
-      openEditor('todo', id);
-    } else if (act === 'edit-notice') {
-      openEditor('notice', id);
     } else if (act === 'edit-ptodo') {
-      openEditor('ptodo', id);
-    } else if (act === 'edit-member') {
-      openEditor('member', id);
+      openEditor(id);
     } else if (act === 'ed-save') {
       saveEditor();
     } else if (act === 'ed-cancel') {
       closeEditor();
     } else if (act === 'ed-cleardate') {
       $('edDue').value = '';
-    } else if (act === 'ed-color') {
-      edColor = COLORS[parseInt(id, 10)];
-      renderEdColors();
     } else if (act === 'timer-start') {
       timerStart();
     } else if (act === 'timer-reset' || act === 'timer-dismiss') {
@@ -1095,30 +1222,79 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
       timerSet(parseInt(id, 10));
     } else if (act === 'timer-custom') {
       timerCustom();
-    } else if (act === 'pick-person') {
-      person = id;
-      renderPersonal();
     } else if (act === 'add-ptodo') {
       addPtodo();
     } else if (act === 'clear-pdate') {
       $('pDue').value = '';
     } else if (act === 'toggle-ptodo') {
       t = findById(state.personal[person] || [], id);
-      if (t) { t.done = !t.done; save(); renderPersonal(); }
+      if (t && t.link === 'math') {
+        $('pMsg').innerHTML = '아래 수학 학습목차에서 강의를 체크하면 자동으로 계산돼요.';
+      } else if (t && t.total > 0) {
+        if (!t.done) { setProgress(t, t.total); }
+        else if (window.confirm('진행 기록을 0으로 되돌릴까요?')) { setProgress(t, 0); }
+      } else if (t) { t.done = !t.done; save(); renderPersonal(); }
+    } else if (act === 'math-toggle') {
+      var mi = parseInt(id, 10), md = state.math.done;
+      state.math.done = md.substring(0, mi) + (md.charAt(mi) === '1' ? '0' : '1') + md.substring(mi + 1);
+      syncMath();
+      save();
+      renderPersonal();
+    } else if (act === 'math-grade') {
+      mathGrade = id === 'all' ? 'all' : parseInt(id, 10);
+      renderMath();
+    } else if (act === 'math-unit') {
+      mathUnit = id === 'all' ? 'all' : parseInt(id, 10);
+      renderMath();
+    } else if (act === 'prog-save') {
+      t = findById(state.personal[person] || [], id);
+      if (t && t.total > 0) {
+        var pv = parseInt($('pgin-' + id).value, 10);
+        if (!(pv >= 0 && pv <= t.total)) {
+          $('pMsg').innerHTML = '0부터 ' + t.total + ' 사이의 숫자로 적어 주세요.';
+        } else {
+          setProgress(t, pv);
+        }
+      }
+    } else if (act === 'prog-plus') {
+      t = findById(state.personal[person] || [], id);
+      if (t && t.total > 0) { setProgress(t, Math.min(t.total, (t.progress || 0) + 1)); }
     } else if (act === 'del-ptodo') {
-      if (window.confirm('이 할 일을 지울까요?')) {
+      if (window.confirm('이 항목을 지울까요?')) {
         removeById(state.personal[person] || [], id);
         save();
         renderPersonal();
       }
     } else if (act === 'clear-pdone') {
-      if (window.confirm('완료한 개인 할 일을 모두 지울까요?')) {
+      if (window.confirm('완료한 항목을 모두 지울까요?')) {
         var src = state.personal[person] || [], rest = [];
         for (var q = 0; q < src.length; q++) { if (!src[q].done) { rest.push(src[q]); } }
         state.personal[person] = rest;
         save();
         renderPersonal();
       }
+    } else if (act === 'cal-prev') {
+      calMove(-1); renderCal(); renderDay();
+    } else if (act === 'cal-next') {
+      calMove(1); renderCal(); renderDay();
+    } else if (act === 'cal-today') {
+      calReset(); renderCal(); renderDay();
+    } else if (act === 'cal-day') {
+      calSel = id; renderCal(); renderDay();
+    } else if (act === 'cal-setgoal') {
+      setGoal($('goalItem').value, calSel);
+    } else if (act === 'cal-cleargoal') {
+      setGoal(id, '');
+    } else if (act === 'plan-add') {
+      addPlan();
+    } else if (act === 'plan-toggle') {
+      t = findById(state.plans, id);
+      if (t) { t.done = !t.done; save(); renderCal(); renderDay(); }
+    } else if (act === 'plan-next') {
+      t = findById(state.plans, id);
+      if (t) { t.date = nextDay(t.date); save(); renderCal(); renderDay(); }
+    } else if (act === 'plan-del') {
+      if (window.confirm('이 계획을 지울까요?')) { removeById(state.plans, id); save(); renderCal(); renderDay(); }
     } else if (act === 'import') {
       doImport();
     }
@@ -1135,20 +1311,28 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
     }
   }, false);
 
-  $('todoText').addEventListener('keydown', function (e) {
-    if (e.keyCode === 13) { e.preventDefault(); addTodo(); }
-  }, false);
   $('pText').addEventListener('keydown', function (e) {
     if (e.keyCode === 13) { e.preventDefault(); addPtodo(); }
   }, false);
-  $('memberText').addEventListener('keydown', function (e) {
-    if (e.keyCode === 13) { e.preventDefault(); addMember(); }
+  $('planText').addEventListener('keydown', function (e) {
+    if (e.keyCode === 13) { e.preventDefault(); addPlan(); }
   }, false);
   $('familyInput').addEventListener('input', function () {
     var v = this.value.replace(/^\s+|\s+$/g, '');
-    state.family = v || '우리집';
+    state.family = v || DEFAULT_TITLE;
     save();
     renderTitle();
+  }, false);
+  $('tLabel').addEventListener('input', function () {
+    state.timer.label = this.value;
+    save();
+  }, false);
+  $('mathTodoOnly').addEventListener('change', function () {
+    mathTodo = this.checked;
+    renderMath();
+  }, false);
+  $('tMin').addEventListener('keydown', function (e) {
+    if (e.keyCode === 13) { e.preventDefault(); timerCustom(); }
   }, false);
 
   /* ---------- 시작 ---------- */
@@ -1156,24 +1340,14 @@ textarea.inp { width: 100%; min-height: 84px; resize: none; display: block; }
   var saved = storageOk ? load() : null;
   if (valid(saved)) {
     state = saved;
-    if (typeof state.family !== 'string' || !state.family) { state.family = '우리집'; }
   } else {
     state = makeSeed();
+    addRealSeed();
     save();
   }
   ensureState();
   renderAll();
   timerInit();
-  $('tLabel').addEventListener('input', function () {
-    state.timer.label = this.value;
-    save();
-  }, false);
-  $('edName').addEventListener('keydown', function (e) {
-    if (e.keyCode === 13) { e.preventDefault(); saveEditor(); }
-  }, false);
-  $('tMin').addEventListener('keydown', function (e) {
-    if (e.keyCode === 13) { e.preventDefault(); timerCustom(); }
-  }, false);
   tick();
   setInterval(tick, 20000);
 })();
